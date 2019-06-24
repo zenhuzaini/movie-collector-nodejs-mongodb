@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Movie Portal Information | Zen x Netguru</title>
+
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <%- include ../navigation_and_header.ejs %>
+
+    <!-- Page Content -->
+    <div class="container">
+        <div class="row">
+            <% for (var i = 0; i < mymovies.length; i++) { %>
+            <div class="col-md-4 mb-5">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <span><img src="<%= mymovies[i].posterLink %>" alt="" srcset=""></span>
+                        <hr>
+                        <h4 class="card-title"><%= mymovies[i].title %></h4>
+                        <p class="card-text"><%= mymovies[i].year %></p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="btn btn-outline-danger"><%= mymovies[i].type %></a>
+                        <a href="/movies/<%= mymovies[i].idmovie %>" class="btn btn-primary">Find Out More!</a>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+        </div>
+    </div>
+    <!-- /.container -->
+
+    <% include ../footer %>
+
+</body>
+
+</html>

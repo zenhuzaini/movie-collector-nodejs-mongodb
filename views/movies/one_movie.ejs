@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Concert Portal</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <%- include ../navigation_and_header.ejs %>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-8 mb-5">
+                <h2>Review / Comments</h2>
+                <hr>
+                <%for(i=0; i < specificcomment.length; i++){ %>
+                <p><%= i+1 %> : <%= specificcomment[i].comments %></p>
+                <% } %>
+                <hr>
+                <form action="/comments" method="post">
+                    <div class="form-group">
+                        <input type="text" name="idmovie" value="<%= onemovie.idmovie %>" hidden>
+                        <label for="comment">Give your comment</label>
+                        <textarea class="form-control" name="comment" rows="3"></textarea>
+                    </div>
+                    <button class="btn btn-primary btn-lg">Send Comment</button>
+                </form>
+            </div>
+            <div class="col-md-4 mb-5">
+                <h2><%= onemovie.title %></h2>
+                <hr>
+                <img src="<%= onemovie.posterLink %>" alt="" srcset="">
+                <hr>
+                <p>
+                    <%= onemovie.title %>
+                    <br>
+                    <%= onemovie.year %>
+                </p>
+                <a href="<%= onemovie.imdbLink %>" target="_blank"><button class="btn btn-outline-success">See
+                        IMDB</button></a>
+                <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis optio neque consectetur consequatur magni in nisi, natus beatae quidem quam odit commodi ducimus totam eum, alias, adipisci nesciunt voluptate. Voluptatum.</p> -->
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+
+    <% include ../footer %>
+
+</body>
+
+</html>
